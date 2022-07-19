@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "675387280298",
+    "project_id": "tukitaki-b3b05",
+    "storage_bucket": "tukitaki-b3b05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675387280298:android:065bfdab8645eed54079d3",
+        "android_client_info": {
+          "package_name": "com.example.tukitaki_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675387280298-0ie5e510b8rrhqq3d5o0hnlsa5m23psh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1fW_LVaKFxYizImyhEhBhfzgTqrgFMKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675387280298-0ie5e510b8rrhqq3d5o0hnlsa5m23psh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
