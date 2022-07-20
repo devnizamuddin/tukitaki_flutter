@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/utils/button.dart';
 
-import '../../../config/app_assets.dart';
 import '../../../config/app_themes.dart';
 import '../../../utils/text_view.dart';
 import '../controllers/login_controller.dart';
@@ -73,7 +72,11 @@ class LoginView extends GetView<LoginController> {
                   ),
                   const SizedBox(height: 20),
                   PrimaryButton(onPressed: controller.login, text: 'LOGIN'),
-                  PrimaryButton(onPressed: controller.login, text: 'SIGN UP'),
+                  COutlineButton(
+                      onPressed: () {
+                        //s Get.to(() => const SignupView());
+                      },
+                      text: 'SIGN UP'),
                   const SizedBox(height: 50),
                   const Padding(
                     padding: EdgeInsets.all(20.0),
