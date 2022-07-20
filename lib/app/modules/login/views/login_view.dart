@@ -70,14 +70,28 @@ class LoginView extends GetView<LoginController> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Obx(
+                        () => Checkbox(
+                          value: controller.rememberPass.value,
+                          onChanged: controller.onRememberPassTap,
+                        ),
+                      ),
+                      const Text('Remember password', style: TextStyle(color: Colors.black54, fontSize: 14)),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
                   PrimaryButton(onPressed: controller.login, text: 'LOGIN'),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   COutlineButton(
                       onPressed: () {
                         //s Get.to(() => const SignupView());
                       },
                       text: 'SIGN UP'),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 32),
                   const Padding(
                     padding: EdgeInsets.all(20.0),
                     child: Text(
