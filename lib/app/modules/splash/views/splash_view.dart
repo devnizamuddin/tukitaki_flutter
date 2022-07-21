@@ -10,7 +10,7 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     controller.navigator();
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text(
           'SplashView',

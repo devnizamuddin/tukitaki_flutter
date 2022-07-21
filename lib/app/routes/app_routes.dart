@@ -3,10 +3,10 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
+  // ignore: constant_identifier_names
   static const HOME = _Paths.HOME;
   static const LOGIN = _Paths.LOGIN;
   static const SPLASH = _Paths.SPLASH;
-  static const SIGNUP = _Paths.SIGNUP;
 }
 
 abstract class _Paths {
@@ -14,5 +14,4 @@ abstract class _Paths {
   static const HOME = '/home';
   static const LOGIN = '/login';
   static const SPLASH = '/splash';
-  static const SIGNUP = '/signup';
 }
