@@ -26,8 +26,12 @@ class HomeView extends GetView<HomeController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomContainer(),
-              PrimaryButton(onPressed: () {}, text: 'Create New Team'),
+              // CustomContainer(),
+              PrimaryButton(
+                  onPressed: () {
+                    controller.showCreateNewTeamDialog();
+                  },
+                  text: 'Create New Team'),
               const SizedBox(height: 10),
               COutlineButton(onPressed: () {}, text: 'Join A Team')
             ],
