@@ -2,15 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/utils/button.dart';
+import 'package:tukitaki_flutter/app/config/app_themes.dart';
 
-import '../../../config/app_themes.dart';
+import '../../../utils/button.dart';
 import '../../../utils/text_view.dart';
-import '../../signup/views/signup_view.dart';
-import '../controllers/login_controller.dart';
+import '../controllers/signup_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+class SignupView extends GetView<SignupController> {
+  const SignupView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class LoginView extends GetView<LoginController> {
             BigTitleText('TukiTaki'),
             const SizedBox(height: 50),
             Form(
-              key: controller.formKey,
+              //  key: controller.formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [

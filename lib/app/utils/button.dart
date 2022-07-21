@@ -7,7 +7,10 @@ ElevatedButton PrimaryButton({required VoidCallback? onPressed, required String 
       onPressed: onPressed,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Text(text),
+        child: Text(
+          text,
+          style: const TextStyle(letterSpacing: 1),
+        ),
       ));
 }
 
@@ -24,7 +27,7 @@ OutlinedButton COutlineButton({required VoidCallback? onPressed, required String
         padding: const EdgeInsets.all(16.0),
         child: Text(
           text,
-          style: const TextStyle(fontWeight: FontWeight.bold, color: AppThemes.PrimaryDarkColor),
+          style: const TextStyle(letterSpacing: 1, fontSize: 16, fontWeight: FontWeight.bold, color: AppThemes.PrimaryDarkColor),
         ),
       ));
 }

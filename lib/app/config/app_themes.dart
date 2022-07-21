@@ -12,7 +12,7 @@ class AppThemes {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: const AppBarTheme(
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: AppThemes.PrimaryDarkColor,
+            //           statusBarColor: AppThemes.PrimaryDarkColor,
             statusBarIconBrightness: Brightness.light, // For Android (dark icons)
             statusBarBrightness: Brightness.light, // For iOS (dark icons)
           ),
