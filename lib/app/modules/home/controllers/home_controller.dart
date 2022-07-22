@@ -1,14 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/modules/home/models/team.dart';
-import 'package:tukitaki_flutter/app/utils/dialog.dart';
-import 'package:tukitaki_flutter/app/utils/snackbar.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../config/firestore_ref.dart';
+import '../../../utils/dialog.dart';
+import '../../../utils/snackbar.dart';
 import '../../../utils/textfield.dart';
+import '../models/team.dart';
 
 class HomeController extends GetxController {
   final Uuid _uuid = const Uuid();

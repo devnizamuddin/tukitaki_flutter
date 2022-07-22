@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/utils/snackbar.dart';
+import '../utils/snackbar.dart';
 
 import '../config/app_config.dart';
 import '../config/firestore_ref.dart';

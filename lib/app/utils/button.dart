@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tukitaki_flutter/app/config/app_themes.dart';
+import '../config/app_themes.dart';
 
 // ignore: non_constant_identifier_names
 ElevatedButton PrimaryButton({required VoidCallback? onPressed, required String text}) {

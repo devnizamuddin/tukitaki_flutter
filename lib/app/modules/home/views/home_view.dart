@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/components/drawer.dart';
-import 'package:tukitaki_flutter/app/config/app_themes.dart';
-import 'package:tukitaki_flutter/app/utils/button.dart';
-import 'package:tukitaki_flutter/app/utils/design.dart';
+import '../../../components/drawer.dart';
+import '../../../config/app_themes.dart';
+import '../../../utils/button.dart';
 
 import '../controllers/home_controller.dart';
 

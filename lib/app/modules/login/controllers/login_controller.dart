@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:tukitaki_flutter/app/modules/home/views/home_view.dart';
+import 'package:tukitaki_flutter/app/routes/app_pages.dart';
+import '../../home/views/home_view.dart';
 
 import '../../../config/app_getstorages.dart';
 import '../../../utils/helper.dart';
 import '../../../utils/snackbar.dart';
+import '../../signup/views/signup_view.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey();
@@ -85,6 +87,10 @@ class LoginController extends GetxController {
   Future<void> saveLoginInfo() async {
     _box.write(AppGetStorages.KEY_EMAIL, emailController.text);
     _box.write(AppGetStorages.KEY_PASSWORD, passwordController.text);
+  }
+
+  goToSignUpPage() {
+    Get.toNamed(Routes.SIGNUP);
   }
 
   requestPermission() async {
