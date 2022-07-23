@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,7 @@ import '../../../services/services.dart';
 import '../../../utils/dialog.dart';
 import '../../../utils/snackbar.dart';
 import '../../../utils/textfield.dart';
-import '../models/team.dart';
+import '../../../models/team.dart';
 
 class HomeController extends GetxController {
   final Uuid _uuid = const Uuid();
@@ -17,11 +18,28 @@ class HomeController extends GetxController {
   TextEditingController? _teamDescController;
 
   final Rx<UserModel?> user = Rx<UserModel?>(null);
+  RxList<TeamModel> listOfTeams = (<TeamModel>[]).obs;
 
   Future<void> setProfile() async {
     user.value = await Services.fetchProfileData();
     debugPrint(user.value.toString());
   }
+
+  Future<void> getMyTeams() async {
+    final QuerySnapshot querySnapshot = await FirestoreCollection.team.get();
+
+    //  final user = UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
+    if (querySnapshot.docs.isNotEmpty) {
+      listOfTeams.value = querySnapshot.docs
+          .map(
+            (QueryDocumentSnapshot queryDocumentSnapshot) => TeamModel.fromMap(queryDocumentSnapshot.data() as Map<String, dynamic>),
+          )
+          .toList();
+    }
+    debugPrint(listOfTeams.toString());
+  }
+
+  onTapTeam() {}
 
   showCreateNewTeamDialog() async {
     await getDialog(
@@ -84,6 +102,7 @@ class HomeController extends GetxController {
     _teamNameController = TextEditingController();
     _teamDescController = TextEditingController();
     setProfile();
+    getMyTeams();
     super.onInit();
   }
 
