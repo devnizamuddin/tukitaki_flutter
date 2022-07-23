@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/models/user.dart';
+import 'package:tukitaki_flutter/app/routes/app_pages.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../config/firestore_ref.dart';
@@ -39,7 +40,9 @@ class HomeController extends GetxController {
     debugPrint(listOfTeams.toString());
   }
 
-  onTapTeam() {}
+  onTapTeam(TeamModel teamModel) {
+    Get.toNamed(Routes.TEAM, arguments: teamModel);
+  }
 
   showCreateNewTeamDialog() async {
     await getDialog(

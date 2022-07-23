@@ -32,6 +32,8 @@ class HomeView extends GetView<HomeController> {
                   text: 'Create New Team'),
               const SizedBox(height: 10),
               COutlineButton(onPressed: () {}, text: 'Join A Team'),
+              const SizedBox(height: 10),
+              const Divider(),
               Obx(
                 () => Expanded(
                   child: GridView.builder(
@@ -53,7 +55,7 @@ class HomeView extends GetView<HomeController> {
                         elevation: 4,
                         child: InkWell(
                           splashColor: AppThemes.PrimaryColor.withOpacity(0.5),
-                          onTap: () => controller.onTapTeam(),
+                          onTap: () => controller.onTapTeam(team),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
