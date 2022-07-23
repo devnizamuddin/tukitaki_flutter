@@ -6,7 +6,6 @@ import '../../../utils/button.dart';
 
 import '../../../config/app_themes.dart';
 import '../../../utils/text_view.dart';
-import '../../signup/views/signup_view.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {

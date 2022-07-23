@@ -24,7 +24,6 @@ class HomeController extends GetxController {
   }
 
   showCreateNewTeamDialog() async {
-    // noteFnode.unfocus();
     await getDialog(
       title: 'Create New Team',
       content: Column(
@@ -66,6 +65,9 @@ class HomeController extends GetxController {
                 code: '',
                 name: _teamNameController!.text,
                 description: _teamDescController!.text,
+                membersId: [
+                  user.value?.id ?? ''
+                ],
               ).toMap(),
             )
             .then((_) => successSnack('Team Created Successfully'))
