@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tukitaki_flutter/app/models/user.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../config/firestore_ref.dart';
+import '../../../services/services.dart';
 import '../../../utils/dialog.dart';
 import '../../../utils/snackbar.dart';
 import '../../../utils/textfield.dart';
@@ -13,6 +15,13 @@ class HomeController extends GetxController {
   final Uuid _uuid = const Uuid();
   TextEditingController? _teamNameController;
   TextEditingController? _teamDescController;
+
+  final Rx<UserModel?> user = Rx<UserModel?>(null);
+
+  Future<void> setProfile() async {
+    user.value = await Services.fetchProfileData();
+    debugPrint(user.value.toString());
+  }
 
   showCreateNewTeamDialog() async {
     // noteFnode.unfocus();
@@ -53,6 +62,8 @@ class HomeController extends GetxController {
             .set(
               TeamModel(
                 id: uuid,
+                ownerId: user.value?.id ?? '',
+                code: '',
                 name: _teamNameController!.text,
                 description: _teamDescController!.text,
               ).toMap(),
@@ -70,6 +81,7 @@ class HomeController extends GetxController {
   void onInit() {
     _teamNameController = TextEditingController();
     _teamDescController = TextEditingController();
+    setProfile();
     super.onInit();
   }
 

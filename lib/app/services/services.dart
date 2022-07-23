@@ -1,17 +1,14 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import '../models/user.dart';
 import '../utils/snackbar.dart';
 
-import '../config/app_config.dart';
 import '../config/firestore_ref.dart';
-import '../modules/home/controllers/home_controller.dart';
-import '../modules/login/models/user_model.dart';
 import '../routes/app_pages.dart';
 
 class Services {

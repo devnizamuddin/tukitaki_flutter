@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:tukitaki_flutter/app/models/user.dart';
 import '../../../config/app_getstorages.dart';
 import '../../../config/firestore_ref.dart';
 import '../../../routes/app_pages.dart';
 import '../../../utils/helper.dart';
 import '../../../utils/snackbar.dart';
 import '../../home/views/home_view.dart';
-import '../models/user.dart';
 
 class SignupController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey();
