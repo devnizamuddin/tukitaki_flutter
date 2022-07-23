@@ -38,25 +38,7 @@ class LoginController extends GetxController {
         EasyLoading.dismiss();
         String? current = userCredential.user?.email;
         helloSnack('Login', current ?? 'Successful');
-        Get.to(HomeView());
-
-        // if (userCredential.user != null) {
-        //   final user = await Services.fetchProfileData();
-        //   if (user != null) {
-        //     if (!user.status) {
-        //       errorSnack('Your account is inactive');
-        //       await FirebaseAuth.instance.signOut();
-        //     } else if (user.type != 'user') {
-        //       errorSnack('You are not a user');
-        //       await FirebaseAuth.instance.signOut();
-        //     } else {
-        //       Get.offAllNamed(Routes.HOME);
-        //     }
-        //   } else {
-        //     errorSnack('Something went wrong');
-        //     await FirebaseAuth.instance.signOut();
-        //   }
-        // }
+        Get.offAllNamed(Routes.HOME);
       } on FirebaseAuthException catch (e) {
         EasyLoading.dismiss();
         if (e.code == 'user-not-found') {
