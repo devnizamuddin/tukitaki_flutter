@@ -14,13 +14,17 @@ import '../routes/app_pages.dart';
 class Services {
   ///FETCH A USER DATA FROM USER COLLECTION
   static Future<UserModel?> fetchProfileData({String? uid}) async {
-    if (FirebaseAuth.instance.currentUser?.uid != null) {
+    String? userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId != null) {
+      debugPrint(userId);
       final DocumentSnapshot documentSnapshot = await FirestoreCollection.user.doc(uid ?? FirebaseAuth.instance.currentUser?.uid).get();
       if (documentSnapshot.exists) {
         final user = UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
         debugPrint(user.toString());
         return user;
       }
+    } else {
+      debugPrint('your user id is null');
     }
   }
 

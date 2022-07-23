@@ -28,7 +28,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> getMyTeams() async {
-    final QuerySnapshot querySnapshot = await FirestoreCollection.team.get();
+    final QuerySnapshot querySnapshot = await FirestoreCollection.team.where("membersId", arrayContains: user.value?.id).get();
 
     if (querySnapshot.docs.isNotEmpty) {
       listOfTeams.value = querySnapshot.docs
@@ -128,18 +128,29 @@ class HomeController extends GetxController {
     if (documentSnapshot.exists) {
       final team = TeamModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
       team.membersId?.add(user.value?.id ?? '');
-      team.membersId?.toSet().toList();
-      debugPrint(user.toString());
+      List<String> membersId = team.membersId?.toSet().toList() ?? [];
+      team.membersId = membersId;
+
+      await FirestoreCollection.team.doc(team.id).set(team.toMap()).then((_) {
+        successSnack('Join in Team Successfully');
+        getMyTeams();
+      })
+
+              // .then((_) => Get.offNamedUntil(Routes.MYJOBS, ModalRoute.withName(Routes.HOME)))
+              //.then((_) => Services.counterModify('total_jobs', true))
+              .catchError((error) => errorSnack('Failed to join Team'))
+          //.then((value) => Get.back())
+          ;
     }
   }
 
   @override
-  void onInit() {
+  void onInit() async {
     _teamNameController = TextEditingController();
     _teamDescController = TextEditingController();
     _teamIdController = TextEditingController();
-    setProfile();
-    getMyTeams();
+    await setProfile();
+    await getMyTeams();
     super.onInit();
   }
 
