@@ -8,6 +8,8 @@ import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/team/bindings/team_binding.dart';
+import '../modules/team/views/team_view.dart';
 
 part 'app_routes.dart';
 
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.SIGNUP,
       page: () => const SignupView(),
       binding: SignupBinding(),
+    ),
+    GetPage(
+      name: _Paths.TEAM,
+      page: () => TeamView(),
+      binding: TeamBinding(),
     ),
   ];
 }
