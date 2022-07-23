@@ -8,6 +8,8 @@ import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/task/bindings/task_binding.dart';
+import '../modules/task/views/task_view.dart';
 import '../modules/team/bindings/team_binding.dart';
 import '../modules/team/views/team_view.dart';
 
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.TEAM,
       page: () => TeamView(),
       binding: TeamBinding(),
+    ),
+    GetPage(
+      name: _Paths.TASK,
+      page: () => TaskView(),
+      binding: TaskBinding(),
     ),
   ];
 }
