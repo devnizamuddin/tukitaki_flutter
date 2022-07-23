@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:tukitaki_flutter/app/config/app_themes.dart';
+import 'package:tukitaki_flutter/app/models/task.dart';
 
 import '../controllers/task_controller.dart';
 
 class TaskView extends GetView<TaskController> {
   @override
   Widget build(BuildContext context) {
+    final TaskModel taskModel = Get.arguments;
     return Scaffold(
+      backgroundColor: AppThemes.bgColor,
       appBar: AppBar(
-        title: Text('TaskView'),
+        title: Text(taskModel.name),
         centerTitle: true,
       ),
       body: Center(

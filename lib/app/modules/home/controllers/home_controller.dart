@@ -17,6 +17,7 @@ class HomeController extends GetxController {
   final Uuid _uuid = const Uuid();
   TextEditingController? _teamNameController;
   TextEditingController? _teamDescController;
+  TextEditingController? _teamIdController;
 
   final Rx<UserModel?> user = Rx<UserModel?>(null);
   RxList<TeamModel> listOfTeams = (<TeamModel>[]).obs;
@@ -29,7 +30,6 @@ class HomeController extends GetxController {
   Future<void> getMyTeams() async {
     final QuerySnapshot querySnapshot = await FirestoreCollection.team.get();
 
-    //  final user = UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
     if (querySnapshot.docs.isNotEmpty) {
       listOfTeams.value = querySnapshot.docs
           .map(
@@ -100,10 +100,44 @@ class HomeController extends GetxController {
         ;
   }
 
+  createJoinATeamDialog() async {
+    await getDialog(
+      title: 'Join A Team',
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SizedBox(height: 10),
+          DialogTextField(hintText: 'Team Id', controller: _teamIdController, textAlign: TextAlign.center),
+        ],
+      ),
+      cancelButton: 'Back',
+      acceptButtonFunc: () async {
+        Get.back();
+        await joinATeam();
+      },
+      acceptButton: 'Join',
+    );
+  }
+
+  Future<void> joinATeam() async {
+    if (_teamIdController!.text.isEmpty) {
+      errorSnack('Team id is required');
+      return;
+    }
+    final DocumentSnapshot documentSnapshot = await FirestoreCollection.team.doc(_teamIdController!.text).get();
+    if (documentSnapshot.exists) {
+      final team = TeamModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
+      team.membersId?.add(user.value?.id ?? '');
+      team.membersId?.toSet().toList();
+      debugPrint(user.toString());
+    }
+  }
+
   @override
   void onInit() {
     _teamNameController = TextEditingController();
     _teamDescController = TextEditingController();
+    _teamIdController = TextEditingController();
     setProfile();
     getMyTeams();
     super.onInit();

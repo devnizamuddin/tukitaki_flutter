@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/models/task.dart';
 import 'package:tukitaki_flutter/app/modules/home/controllers/home_controller.dart';
+import 'package:tukitaki_flutter/app/routes/app_pages.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../config/firestore_ref.dart';
@@ -32,7 +33,9 @@ class TeamController extends GetxController {
     debugPrint(listOfTask.toString());
   }
 
-  onTapTask(TaskModel taskModel) {}
+  onTapTask(TaskModel taskModel) {
+    Get.toNamed(Routes.TASK, arguments: taskModel);
+  }
 
   createNewTaskDialog() async {
     await getDialog(

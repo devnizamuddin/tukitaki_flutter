@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/config/app_themes.dart';
@@ -23,13 +24,34 @@ class TeamView extends GetView<TeamController> {
           onPressed: () {
             controller.createNewTaskDialog();
           },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              InkWell(
+                onTap: () {
+                  Clipboard.setData(ClipboardData(text: team.id));
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(8),
+                  color: AppThemes.AccentColor,
+                  padding: const EdgeInsets.only(top: 20, bottom: 20, right: 10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          team.id,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const Icon(Icons.copy)
+                    ],
+                  ),
+                ),
+              ),
               Obx(
                 () => Expanded(
                   child: GridView.builder(

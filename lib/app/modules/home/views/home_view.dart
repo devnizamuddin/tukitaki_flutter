@@ -31,7 +31,7 @@ class HomeView extends GetView<HomeController> {
                   },
                   text: 'Create New Team'),
               const SizedBox(height: 10),
-              COutlineButton(onPressed: () {}, text: 'Join A Team'),
+              COutlineButton(onPressed: controller.createJoinATeamDialog, text: 'Join A Team'),
               const SizedBox(height: 10),
               const Divider(),
               Obx(
