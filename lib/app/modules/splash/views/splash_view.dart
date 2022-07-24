@@ -14,7 +14,7 @@ class SplashView extends GetView<SplashController> {
     return Scaffold(
         backgroundColor: AppThemes.bgColor,
         body: SafeArea(
-          child: Container(
+          child: SizedBox(
             width: double.maxFinite,
             height: double.maxFinite,
             child: Column(

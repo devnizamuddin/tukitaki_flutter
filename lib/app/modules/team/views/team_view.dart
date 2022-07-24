@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/config/app_themes.dart';
 import 'package:tukitaki_flutter/app/models/team.dart';
+import 'package:tukitaki_flutter/app/utils/text_view.dart';
 
 import '../controllers/team_controller.dart';
 
@@ -32,26 +33,32 @@ class TeamView extends GetView<TeamController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Card(
-                child: Text(team?.description ?? ''),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SmallTitleText(
+                    team?.description ?? '',
+                  ),
+                ),
               ),
               InkWell(
                 onTap: () {
                   Clipboard.setData(ClipboardData(text: team?.id));
                 },
-                child: Container(
-                  margin: const EdgeInsets.all(8),
+                child: Card(
                   color: AppThemes.AccentColor,
-                  padding: const EdgeInsets.only(top: 20, bottom: 20, right: 10),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          team?.id ?? '',
-                          textAlign: TextAlign.center,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            team?.id ?? '',
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
-                      const Icon(Icons.copy)
-                    ],
+                        const Icon(Icons.copy)
+                      ],
+                    ),
                   ),
                 ),
               ),

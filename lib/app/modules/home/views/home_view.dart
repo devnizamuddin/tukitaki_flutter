@@ -62,7 +62,7 @@ class HomeView extends GetView<HomeController> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const Icon(Icons.people, color: AppThemes.PrimaryColor, size: 50),
+                                const Icon(Icons.wc, color: AppThemes.PrimaryColor, size: 50),
                                 Text(
                                   team.name ?? '',
                                   textAlign: TextAlign.center,
