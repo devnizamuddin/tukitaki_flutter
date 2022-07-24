@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:tukitaki_flutter/app/config/app_themes.dart';
+import 'package:tukitaki_flutter/app/utils/design.dart';
+import '../../../utils/text_view.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -9,13 +11,35 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     controller.navigator();
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'SplashView',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+    return Scaffold(
+        backgroundColor: AppThemes.bgColor,
+        body: SafeArea(
+          child: Container(
+            width: double.maxFinite,
+            height: double.maxFinite,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomPaint(
+                  size: const Size(double.maxFinite, 160), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                  painter: CustomPainterTop(),
+                ),
+                Column(
+                  children: [
+                    BigTitleText('TukiTaki', fontSize: 48),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: SmallTitleText('An apps for income and expenditure calculation and suduled task management'),
+                    ),
+                  ],
+                ),
+                CustomPaint(
+                  size: const Size(double.maxFinite, 160), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                  painter: RPSCustomPainter(),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }

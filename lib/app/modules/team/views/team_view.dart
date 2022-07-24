@@ -31,6 +31,9 @@ class TeamView extends GetView<TeamController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Card(
+                child: Text(team?.description ?? ''),
+              ),
               InkWell(
                 onTap: () {
                   Clipboard.setData(ClipboardData(text: team?.id));
