@@ -12,10 +12,10 @@ import '../../../utils/snackbar.dart';
 
 class TaskController extends GetxController {
   RxList<TeamModel> listOfTeams = (<TeamModel>[]).obs;
-  final HomeController _homeController = Get.find();
+  final HomeController homeController = Get.find();
 
   Future<void> getMyTeams() async {
-    final QuerySnapshot querySnapshot = await FirestoreCollection.task.where("membersId", arrayContains: _homeController.user.value?.id).get();
+    final QuerySnapshot querySnapshot = await FirestoreCollection.task.where("membersId", arrayContains: homeController.user.value?.id).get();
 
     if (querySnapshot.docs.isNotEmpty) {
       listOfTeams.value = querySnapshot.docs

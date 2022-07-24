@@ -22,14 +22,17 @@ class TaskView extends GetView<TaskController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(taskModel.name),
-            IconButton(
-                onPressed: () {
-                  Get.to(const AddPeopleView(), arguments: [
-                    taskModel,
-                    teamModel
-                  ]);
-                },
-                icon: const Icon(Icons.group_add_outlined))
+            if (taskModel.ownerId == controller.homeController.user.value?.id)
+              IconButton(
+                  onPressed: () {
+                    Get.to(const AddPeopleView(), arguments: [
+                      taskModel,
+                      teamModel
+                    ]);
+                  },
+                  icon: const Icon(Icons.group_add_outlined))
+            else
+              Container()
           ],
         ),
         centerTitle: true,
