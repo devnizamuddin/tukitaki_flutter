@@ -13,16 +13,16 @@ import '../../../utils/snackbar.dart';
 import '../../../utils/textfield.dart';
 
 class TeamController extends GetxController {
-  final _homeController = Get.find<HomeController>();
   TextEditingController? _taskNameController = TextEditingController();
   TextEditingController? _taskDescController = TextEditingController();
   final Uuid _uuid = const Uuid();
   String userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+  final HomeController _homeController = Get.find();
 
   RxList<TaskModel> listOfTask = (<TaskModel>[]).obs;
 
-  Future<void> getMyTasks() async {
-    final QuerySnapshot querySnapshot = await FirestoreCollection.task.get();
+  Future<void> getMyTasks(String teamId) async {
+    final QuerySnapshot querySnapshot = await FirestoreCollection.task.where("teamId", isEqualTo: teamId).get();
 
     //  final user = UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
     if (querySnapshot.docs.isNotEmpty) {
@@ -79,6 +79,9 @@ class TeamController extends GetxController {
                 id: uuid,
                 teamId: teamId,
                 ownerId: userId,
+                members: [
+                  _homeController.user.value!
+                ],
                 name: _taskNameController!.text,
                 description: _taskDescController!.text,
                 type: 1,
@@ -95,7 +98,6 @@ class TeamController extends GetxController {
 
   @override
   void onInit() async {
-    await getMyTasks();
     super.onInit();
   }
 

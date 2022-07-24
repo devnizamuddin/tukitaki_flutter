@@ -14,6 +14,7 @@ class TeamView extends GetView<TeamController> {
   @override
   Widget build(BuildContext context) {
     final TeamModel? team = Get.arguments;
+    controller.getMyTasks(team?.id ?? '');
     debugPrint(team.toString());
     return Scaffold(
         backgroundColor: AppThemes.bgColor,

@@ -71,7 +71,7 @@ class HomeController extends GetxController {
     );
   }
 
-  createNewTeam() async {
+  Future<void> createNewTeam() async {
     final String uuid = _uuid.v4();
 
     if (_teamNameController!.text.isEmpty) {
@@ -91,6 +91,9 @@ class HomeController extends GetxController {
                 membersId: [
                   user.value?.id ?? ''
                 ],
+                members: [
+                  user.value!
+                ],
               ).toMap(),
             )
             .then((_) => successSnack('Team Created Successfully'))
@@ -102,7 +105,7 @@ class HomeController extends GetxController {
         ;
   }
 
-  createJoinATeamDialog() async {
+  Future<void> createJoinATeamDialog() async {
     await getDialog(
       title: 'Join A Team',
       content: Column(
@@ -132,7 +135,8 @@ class HomeController extends GetxController {
       team.membersId?.add(user.value?.id ?? '');
       List<String> membersId = team.membersId?.toSet().toList() ?? [];
       team.membersId = membersId;
-
+      List<UserModel> members = team.members?.toSet().toList() ?? [];
+      team.members = members;
       await FirestoreCollection.team.doc(team.id).set(team.toMap()).then((_) {
         successSnack('Join in Team Successfully');
         getMyTeams();

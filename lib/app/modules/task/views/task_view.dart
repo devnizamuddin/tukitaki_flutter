@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/config/app_themes.dart';
 import 'package:tukitaki_flutter/app/models/task.dart';
+import 'package:tukitaki_flutter/app/modules/task/views/add_people_view.dart';
 
 import '../controllers/task_controller.dart';
 
@@ -19,15 +20,32 @@ class TaskView extends GetView<TaskController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(taskModel.name),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.group_add_outlined))
+            IconButton(
+                onPressed: () {
+                  Get.to(const AddPeopleView());
+                },
+                icon: const Icon(Icons.group_add_outlined))
           ],
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'TaskView is working',
-          style: TextStyle(fontSize: 20),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ListView.builder(
+          itemCount: taskModel.members?.length,
+          itemBuilder: (BuildContext context, int index) {
+            final member = taskModel.members?[index];
+            return Card(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(member?.name ?? ''),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
