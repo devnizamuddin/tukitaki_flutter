@@ -84,7 +84,7 @@ class TeamView extends GetView<TeamController> {
                         elevation: 4,
                         child: InkWell(
                           splashColor: AppThemes.PrimaryColor.withOpacity(0.5),
-                          onTap: () => controller.onTapTask(task),
+                          onTap: () => controller.onTapTask(task, team!),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Column(

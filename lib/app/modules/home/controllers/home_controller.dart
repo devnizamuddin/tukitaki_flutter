@@ -75,7 +75,7 @@ class HomeController extends GetxController {
     final String uuid = _uuid.v4();
 
     if (_teamNameController!.text.isEmpty) {
-      errorSnack('Ream name is required');
+      errorSnack('Team name is required');
       return;
     }
 
@@ -103,6 +103,7 @@ class HomeController extends GetxController {
             .catchError((error) => errorSnack('Failed to add Team'))
         //.then((value) => Get.back())
         ;
+    await getMyTeams();
   }
 
   Future<void> createJoinATeamDialog() async {
@@ -135,6 +136,7 @@ class HomeController extends GetxController {
       team.membersId?.add(user.value?.id ?? '');
       List<String> membersId = team.membersId?.toSet().toList() ?? [];
       team.membersId = membersId;
+      team.members?.add(user.value!);
       List<UserModel> members = team.members?.toSet().toList() ?? [];
       team.members = members;
       await FirestoreCollection.team.doc(team.id).set(team.toMap()).then((_) {

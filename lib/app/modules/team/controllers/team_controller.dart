@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/models/task.dart';
+import 'package:tukitaki_flutter/app/models/team.dart';
 import 'package:tukitaki_flutter/app/modules/home/controllers/home_controller.dart';
 import 'package:tukitaki_flutter/app/routes/app_pages.dart';
 import 'package:uuid/uuid.dart';
@@ -22,7 +23,11 @@ class TeamController extends GetxController {
   RxList<TaskModel> listOfTask = (<TaskModel>[]).obs;
 
   Future<void> getMyTasks(String teamId) async {
-    final QuerySnapshot querySnapshot = await FirestoreCollection.task.where("teamId", isEqualTo: teamId).get();
+    final QuerySnapshot querySnapshot = await FirestoreCollection.task.where("teamId", isEqualTo: teamId).where('membersId', arrayContains: userId).get().catchError(
+      (error) {
+        debugPrint(error.toString());
+      },
+    );
 
     //  final user = UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
     if (querySnapshot.docs.isNotEmpty) {
@@ -31,12 +36,15 @@ class TeamController extends GetxController {
             (QueryDocumentSnapshot queryDocumentSnapshot) => TaskModel.fromMap(queryDocumentSnapshot.data() as Map<String, dynamic>),
           )
           .toList();
-    }
+    } else {}
     debugPrint(listOfTask.toString());
   }
 
-  onTapTask(TaskModel taskModel) {
-    Get.toNamed(Routes.TASK, arguments: taskModel);
+  onTapTask(TaskModel taskModel, TeamModel teamModel) {
+    Get.toNamed(Routes.TASK, arguments: [
+      taskModel,
+      teamModel
+    ]);
   }
 
   createNewTaskDialog(String teamId) async {
@@ -81,6 +89,9 @@ class TeamController extends GetxController {
                 ownerId: userId,
                 members: [
                   _homeController.user.value!
+                ],
+                membersId: [
+                  _homeController.user.value!.id
                 ],
                 name: _taskNameController!.text,
                 description: _taskDescController!.text,

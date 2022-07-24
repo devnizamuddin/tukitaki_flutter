@@ -12,6 +12,7 @@ class TaskModel {
   String description;
   int type;
   String? taskType;
+  List<String>? membersId;
   List<UserModel>? members;
   TaskModel({
     required this.id,
@@ -21,6 +22,7 @@ class TaskModel {
     required this.description,
     required this.type,
     this.taskType,
+    this.membersId,
     this.members,
   });
 
@@ -32,6 +34,7 @@ class TaskModel {
     String? description,
     int? type,
     String? taskType,
+    List<String>? membersId,
     List<UserModel>? members,
   }) {
     return TaskModel(
@@ -42,6 +45,7 @@ class TaskModel {
       description: description ?? this.description,
       type: type ?? this.type,
       taskType: taskType ?? this.taskType,
+      membersId: membersId ?? this.membersId,
       members: members ?? this.members,
     );
   }
@@ -55,6 +59,7 @@ class TaskModel {
       'description': description,
       'type': type,
       'taskType': taskType,
+      'membersId': membersId,
       'members': members?.map((x) => x.toMap()).toList(),
     };
   }
@@ -68,6 +73,7 @@ class TaskModel {
       description: map['description'] ?? '',
       type: map['type']?.toInt() ?? 0,
       taskType: map['taskType'],
+      membersId: List<String>.from(map['membersId']),
       members: map['members'] != null ? List<UserModel>.from(map['members']?.map((x) => UserModel.fromMap(x))) : null,
     );
   }
@@ -78,18 +84,18 @@ class TaskModel {
 
   @override
   String toString() {
-    return 'TaskModel(id: $id, teamId: $teamId, ownerId: $ownerId, name: $name, description: $description, type: $type, taskType: $taskType, members: $members)';
+    return 'TaskModel(id: $id, teamId: $teamId, ownerId: $ownerId, name: $name, description: $description, type: $type, taskType: $taskType, membersId: $membersId, members: $members)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is TaskModel && other.id == id && other.teamId == teamId && other.ownerId == ownerId && other.name == name && other.description == description && other.type == type && other.taskType == taskType && listEquals(other.members, members);
+    return other is TaskModel && other.id == id && other.teamId == teamId && other.ownerId == ownerId && other.name == name && other.description == description && other.type == type && other.taskType == taskType && listEquals(other.membersId, membersId) && listEquals(other.members, members);
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ teamId.hashCode ^ ownerId.hashCode ^ name.hashCode ^ description.hashCode ^ type.hashCode ^ taskType.hashCode ^ members.hashCode;
+    return id.hashCode ^ teamId.hashCode ^ ownerId.hashCode ^ name.hashCode ^ description.hashCode ^ type.hashCode ^ taskType.hashCode ^ membersId.hashCode ^ members.hashCode;
   }
 }
