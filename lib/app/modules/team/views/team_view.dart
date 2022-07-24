@@ -12,17 +12,17 @@ class TeamView extends GetView<TeamController> {
 
   @override
   Widget build(BuildContext context) {
-    final TeamModel team = Get.arguments;
+    final TeamModel? team = Get.arguments;
     debugPrint(team.toString());
     return Scaffold(
         backgroundColor: AppThemes.bgColor,
         appBar: AppBar(
-          title: Text(team.name ?? 'Team'),
+          title: Text(team?.name ?? 'Team'),
           centerTitle: true,
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            controller.createNewTaskDialog();
+            controller.createNewTaskDialog(team?.id ?? '');
           },
           child: const Icon(Icons.add),
         ),
@@ -33,7 +33,7 @@ class TeamView extends GetView<TeamController> {
             children: [
               InkWell(
                 onTap: () {
-                  Clipboard.setData(ClipboardData(text: team.id));
+                  Clipboard.setData(ClipboardData(text: team?.id));
                 },
                 child: Container(
                   margin: const EdgeInsets.all(8),
@@ -43,7 +43,7 @@ class TeamView extends GetView<TeamController> {
                     children: [
                       Expanded(
                         child: Text(
-                          team.id,
+                          team?.id ?? '',
                           textAlign: TextAlign.center,
                         ),
                       ),

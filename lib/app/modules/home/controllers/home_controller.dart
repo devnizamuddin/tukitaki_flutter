@@ -41,6 +41,8 @@ class HomeController extends GetxController {
   }
 
   onTapTeam(TeamModel teamModel) {
+    debugPrint(teamModel.toString());
+
     Get.toNamed(Routes.TEAM, arguments: teamModel);
   }
 
@@ -134,13 +136,7 @@ class HomeController extends GetxController {
       await FirestoreCollection.team.doc(team.id).set(team.toMap()).then((_) {
         successSnack('Join in Team Successfully');
         getMyTeams();
-      })
-
-              // .then((_) => Get.offNamedUntil(Routes.MYJOBS, ModalRoute.withName(Routes.HOME)))
-              //.then((_) => Services.counterModify('total_jobs', true))
-              .catchError((error) => errorSnack('Failed to join Team'))
-          //.then((value) => Get.back())
-          ;
+      }).catchError((error) => errorSnack('Failed to join Team'));
     }
   }
 

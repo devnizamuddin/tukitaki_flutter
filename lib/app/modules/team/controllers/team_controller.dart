@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/models/task.dart';
@@ -13,9 +14,10 @@ import '../../../utils/textfield.dart';
 
 class TeamController extends GetxController {
   final _homeController = Get.find<HomeController>();
-  TextEditingController? _taskNameController;
-  TextEditingController? _taskDescController;
+  TextEditingController? _taskNameController = TextEditingController();
+  TextEditingController? _taskDescController = TextEditingController();
   final Uuid _uuid = const Uuid();
+  String userId = FirebaseAuth.instance.currentUser?.uid ?? '';
 
   RxList<TaskModel> listOfTask = (<TaskModel>[]).obs;
 
@@ -37,7 +39,7 @@ class TeamController extends GetxController {
     Get.toNamed(Routes.TASK, arguments: taskModel);
   }
 
-  createNewTaskDialog() async {
+  createNewTaskDialog(String teamId) async {
     await getDialog(
       title: 'Create New Task',
       content: Column(
@@ -56,13 +58,13 @@ class TeamController extends GetxController {
       cancelButton: 'Back',
       acceptButtonFunc: () async {
         Get.back();
-        await createNewTask();
+        await createNewTask(teamId);
       },
       acceptButton: 'Create',
     );
   }
 
-  createNewTask() async {
+  createNewTask(String teamId) async {
     final String uuid = _uuid.v4();
 
     if (_taskNameController!.text.isEmpty) {
@@ -75,6 +77,8 @@ class TeamController extends GetxController {
             .set(
               TaskModel(
                 id: uuid,
+                teamId: teamId,
+                ownerId: userId,
                 name: _taskNameController!.text,
                 description: _taskDescController!.text,
                 type: 1,
@@ -90,10 +94,8 @@ class TeamController extends GetxController {
   }
 
   @override
-  void onInit() {
-    getMyTasks();
-    _taskNameController = TextEditingController();
-    _taskDescController = TextEditingController();
+  void onInit() async {
+    await getMyTasks();
     super.onInit();
   }
 
