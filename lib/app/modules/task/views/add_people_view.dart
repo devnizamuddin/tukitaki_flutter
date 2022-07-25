@@ -31,9 +31,11 @@ class AddPeopleView extends GetView<TaskController> {
               child: Card(
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Column(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(member?.name ?? ''),
+                      IconButton(onPressed: () {}, icon: Icon(Icons.add))
                     ],
                   ),
                 ),

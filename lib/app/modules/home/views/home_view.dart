@@ -18,7 +18,9 @@ class HomeView extends GetView<HomeController> {
           title: const Text('Home'),
           centerTitle: true,
         ),
-        drawer: const TukiTakiDrawer(),
+        drawer: TukiTakiDrawer(
+          userModel: controller.user.value,
+        ),
         body: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Column(

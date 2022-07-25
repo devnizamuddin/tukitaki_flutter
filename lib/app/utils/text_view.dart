@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 // ignore: non_constant_identifier_names
-Text BigTitleText(String text, {TextAlign? aign, Color? myColor, double? fontSize}) {
+Text BigTitleText(String text, {TextAlign? aign, Color? color, double? fontSize}) {
   return Text(
     text,
     textAlign: aign ?? TextAlign.center,
     style: TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: fontSize ?? 32,
-      color: myColor ?? Colors.black,
+      color: color ?? Colors.black,
       shadows: const <Shadow>[
         Shadow(
           offset: Offset(10.0, 10.0),
@@ -40,5 +40,13 @@ Text SmallTitleText(String text, {TextAlign? aign, TextStyle? style}) {
     text,
     textAlign: aign ?? TextAlign.center,
     style: style ?? const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+  );
+}
+
+Text SmallText(String text, {TextAlign? aign, TextStyle? style}) {
+  return Text(
+    text,
+    textAlign: aign ?? TextAlign.center,
+    style: style ?? const TextStyle(fontSize: 16),
   );
 }
