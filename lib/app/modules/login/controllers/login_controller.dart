@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:tukitaki_flutter/app/routes/app_pages.dart';
 import '../../home/views/home_view.dart';
 
@@ -21,7 +20,7 @@ class LoginController extends GetxController {
 
   RxBool rememberPass = false.obs;
   RxBool obscurePassField = true.obs;
-  final _box = GetStorage();
+  // final _box = GetStorage();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -55,21 +54,21 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<void> onRememberPassTap(bool? v) async {
-    if (v != null) {
-      rememberPass.value = v;
-      _box.write(AppGetStorages.KEY_REMEMBER_PASS_STATUS, v);
-    }
-  }
+  // Future<void> onRememberPassTap(bool? v) async {
+  //   if (v != null) {
+  //     rememberPass.value = v;
+  //     _box.write(AppGetStorages.KEY_REMEMBER_PASS_STATUS, v);
+  //   }
+  // }
 
   Future<void> onObscureTap() async {
     obscurePassField.value = !obscurePassField.value;
   }
 
-  Future<void> saveLoginInfo() async {
-    _box.write(AppGetStorages.KEY_EMAIL, emailController.text);
-    _box.write(AppGetStorages.KEY_PASSWORD, passwordController.text);
-  }
+  // Future<void> saveLoginInfo() async {
+  //   _box.write(AppGetStorages.KEY_EMAIL, emailController.text);
+  //   _box.write(AppGetStorages.KEY_PASSWORD, passwordController.text);
+  // }
 
   goToSignUpPage() {
     Get.toNamed(Routes.SIGNUP);
@@ -85,9 +84,9 @@ class LoginController extends GetxController {
   void onInit() async {
     emailFnode = FocusNode();
     passFnode = FocusNode();
-    rememberPass.value = _box.read(AppGetStorages.KEY_REMEMBER_PASS_STATUS) ?? false;
-    emailController = TextEditingController(text: rememberPass.value ? _box.read(AppGetStorages.KEY_EMAIL) : '');
-    passwordController = TextEditingController(text: rememberPass.value ? _box.read(AppGetStorages.KEY_PASSWORD) : '');
+    // rememberPass.value = _box.read(AppGetStorages.KEY_REMEMBER_PASS_STATUS) ?? false;
+    // emailController = TextEditingController(text: rememberPass.value ? _box.read(AppGetStorages.KEY_EMAIL) : '');
+    // passwordController = TextEditingController(text: rememberPass.value ? _box.read(AppGetStorages.KEY_PASSWORD) : '');
     super.onInit();
   }
 

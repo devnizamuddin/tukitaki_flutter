@@ -76,7 +76,8 @@ class LoginView extends GetView<LoginController> {
                       Obx(
                         () => Checkbox(
                           value: controller.rememberPass.value,
-                          onChanged: controller.onRememberPassTap,
+                          //onChanged: controller.onRememberPassTap,
+                          onChanged: (value) {},
                         ),
                       ),
                       const Text('Remember password', style: TextStyle(color: Colors.black54, fontSize: 14)),

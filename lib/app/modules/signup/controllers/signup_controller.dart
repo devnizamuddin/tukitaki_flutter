@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:tukitaki_flutter/app/models/user.dart';
 import '../../../config/app_getstorages.dart';
 import '../../../config/firestore_ref.dart';
@@ -22,7 +21,7 @@ class SignupController extends GetxController {
   late FocusNode passFnode;
 
   RxBool obscurePassField = true.obs;
-  final _box = GetStorage();
+  //final _box = GetStorage();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> login() async {
@@ -76,10 +75,10 @@ class SignupController extends GetxController {
     obscurePassField.value = !obscurePassField.value;
   }
 
-  Future<void> saveLoginInfo() async {
-    _box.write(AppGetStorages.KEY_EMAIL, emailController.text);
-    _box.write(AppGetStorages.KEY_PASSWORD, passwordController.text);
-  }
+  // Future<void> saveLoginInfo() async {
+  //   _box.write(AppGetStorages.KEY_EMAIL, emailController.text);
+  //   _box.write(AppGetStorages.KEY_PASSWORD, passwordController.text);
+  // }
 
   goToSignUpPage() {
     Get.toNamed(Routes.SIGNUP);
