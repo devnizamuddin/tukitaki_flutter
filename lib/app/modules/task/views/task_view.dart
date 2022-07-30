@@ -6,6 +6,7 @@ import 'package:tukitaki_flutter/app/models/task.dart';
 import 'package:tukitaki_flutter/app/models/team.dart';
 import 'package:tukitaki_flutter/app/modules/task/views/add_people_view.dart';
 
+import '../../../models/user.dart';
 import '../controllers/task_controller.dart';
 
 class TaskView extends GetView<TaskController> {
@@ -14,6 +15,7 @@ class TaskView extends GetView<TaskController> {
   @override
   Widget build(BuildContext context) {
     final TaskModel taskModel = Get.arguments[0];
+    controller.listOfTaskMembers.value = taskModel.members ?? [];
     final TeamModel teamModel = Get.arguments[1];
     return Scaffold(
       backgroundColor: AppThemes.bgColor,
@@ -39,23 +41,24 @@ class TaskView extends GetView<TaskController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: ListView.builder(
-          itemCount: taskModel.members?.length,
-          itemBuilder: (BuildContext context, int index) {
-            final member = taskModel.members?[index];
-            return Card(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Text(member?.name ?? ''),
-                  ],
-                ),
-              ),
-            );
-          },
-        ),
+        child: Obx(() => ReorderableListView.builder(
+              itemBuilder: (context, index) => buildMembers(controller.listOfTaskMembers[index]),
+              itemCount: controller.listOfTaskMembers.length,
+              onReorder: (oldIndex, newIndex) {
+                final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
+
+                final member = controller.listOfTaskMembers.removeAt(oldIndex);
+                controller.listOfTaskMembers.insert(index, member);
+              },
+            )),
       ),
     );
   }
+}
+
+Widget buildMembers(UserModel userModel) {
+  return ListTile(
+    key: ValueKey(userModel),
+    title: Text(userModel.name),
+  );
 }

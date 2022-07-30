@@ -12,6 +12,7 @@ import '../../../utils/snackbar.dart';
 
 class TaskController extends GetxController {
   RxList<TeamModel> listOfTeams = (<TeamModel>[]).obs;
+  RxList<UserModel> listOfTaskMembers = (<UserModel>[]).obs;
   final HomeController homeController = Get.find();
 
   Future<void> getMyTeams() async {
