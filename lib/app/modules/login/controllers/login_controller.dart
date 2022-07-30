@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/routes/app_pages.dart';
-import '../../home/views/home_view.dart';
 
-import '../../../config/app_getstorages.dart';
 import '../../../utils/helper.dart';
 import '../../../utils/snackbar.dart';
-import '../../signup/views/signup_view.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey();
@@ -87,6 +84,8 @@ class LoginController extends GetxController {
     // rememberPass.value = _box.read(AppGetStorages.KEY_REMEMBER_PASS_STATUS) ?? false;
     // emailController = TextEditingController(text: rememberPass.value ? _box.read(AppGetStorages.KEY_EMAIL) : '');
     // passwordController = TextEditingController(text: rememberPass.value ? _box.read(AppGetStorages.KEY_PASSWORD) : '');
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
     super.onInit();
   }
 

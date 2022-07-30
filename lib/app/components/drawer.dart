@@ -25,7 +25,7 @@ class TukiTakiDrawer extends StatelessWidget {
             children: [
               BigTitleText('TukiTaki', color: AppThemes.PrimaryColor, fontSize: 48),
               const SizedBox(height: 20),
-              SmallTitleText(userModel?.name ?? ''),
+              SmallTitleText(userModel?.name ?? 'dsf'),
               SmallText(userModel?.email ?? ''),
             ],
           )),

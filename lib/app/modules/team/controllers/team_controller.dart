@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/models/task.dart';
 import 'package:tukitaki_flutter/app/models/team.dart';
+import 'package:tukitaki_flutter/app/models/user.dart';
 import 'package:tukitaki_flutter/app/modules/home/controllers/home_controller.dart';
+import 'package:tukitaki_flutter/app/modules/task/models/taskMembers.dart';
 import 'package:tukitaki_flutter/app/routes/app_pages.dart';
 import 'package:uuid/uuid.dart';
 
@@ -79,7 +81,9 @@ class TeamController extends GetxController {
       errorSnack('Task name is required');
       return;
     }
+    UserModel userModel = _homeController.user.value!;
 
+    TaskMemberModel taskMemberModel = TaskMemberModel(id: userModel.id, name: userModel.name, email: userModel.email, taskSerial: 0, isTaskdone: false);
     await FirestoreCollection.task
             .doc(uuid)
             .set(
@@ -87,8 +91,8 @@ class TeamController extends GetxController {
                 id: uuid,
                 teamId: teamId,
                 ownerId: userId,
-                members: [
-                  _homeController.user.value!
+                taskMembers: [
+                  taskMemberModel
                 ],
                 membersId: [
                   _homeController.user.value!.id

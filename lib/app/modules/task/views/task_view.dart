@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tukitaki_flutter/app/config/app_themes.dart';
 import 'package:tukitaki_flutter/app/models/task.dart';
 import 'package:tukitaki_flutter/app/models/team.dart';
+import 'package:tukitaki_flutter/app/modules/task/models/taskMembers.dart';
 import 'package:tukitaki_flutter/app/modules/task/views/add_people_view.dart';
 
 import '../../../models/user.dart';
@@ -15,7 +16,7 @@ class TaskView extends GetView<TaskController> {
   @override
   Widget build(BuildContext context) {
     final TaskModel taskModel = Get.arguments[0];
-    controller.listOfTaskMembers.value = taskModel.members ?? [];
+    controller.listOfTaskMembers.value = taskModel.taskMembers ?? [];
     final TeamModel teamModel = Get.arguments[1];
     return Scaffold(
       backgroundColor: AppThemes.bgColor,
@@ -56,9 +57,9 @@ class TaskView extends GetView<TaskController> {
   }
 }
 
-Widget buildMembers(UserModel userModel) {
+Widget buildMembers(TaskMemberModel taskMember) {
   return ListTile(
-    key: ValueKey(userModel),
-    title: Text(userModel.name),
+    key: ValueKey(taskMember),
+    title: Text(taskMember.name),
   );
 }

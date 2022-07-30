@@ -26,6 +26,7 @@ class AddPeopleView extends GetView<TaskController> {
             final member = teamModel.members?[index];
             return InkWell(
               onTap: () {
+                debugPrint('On click team member');
                 controller.addMemberToTask(taskModel, member!);
               },
               child: Card(
