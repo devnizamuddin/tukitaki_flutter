@@ -12,6 +12,12 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+    // options: const FirebaseOptions(
+    //   apiKey: "AIzaSyD1fW_LVaKFxYizImyhEhBhfzgTqrgFMKo",
+    //   appId: "com.example.tukitakiFlutter",
+    //   messagingSenderId: "",
+    //   projectId: "tukitaki-b3b05",
+    // ),
   );
   runApp(
     GetMaterialApp(
