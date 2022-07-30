@@ -51,6 +51,20 @@ class TaskController extends GetxController {
         ;
   }
 
+  setTaskDoneToTaskStatus(TaskModel taskModel, TaskMemberModel taskMember) async {
+    TaskMemberModel taskMemberModel = taskMember.copyWith(isTaskdone: !taskMember.isTaskdone);
+    await FirestoreCollection.task
+            .doc(taskModel.id)
+            .set(taskModel.toMap())
+            .then((_) => successSnack('Members added Successfully'))
+
+            // .then((_) => Get.offNamedUntil(Routes.MYJOBS, ModalRoute.withName(Routes.HOME)))
+            //.then((_) => Services.counterModify('total_jobs', true))
+            .catchError((error) => errorSnack('Failed to add Task'))
+        //.then((value) => Get.back())
+        ;
+  }
+
   @override
   void onInit() {
     super.onInit();

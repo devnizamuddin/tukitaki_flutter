@@ -88,7 +88,7 @@ class SignupView extends GetView<SignupController> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  PrimaryButton(onPressed: controller.login, text: 'SIGN UP'),
+                  PrimaryButton(onPressed: controller.signupWithEmailAndPassword, text: 'SIGN UP'),
                   const SizedBox(height: 32),
                   const Padding(
                     padding: EdgeInsets.all(20.0),

@@ -24,7 +24,7 @@ class SignupController extends GetxController {
   //final _box = GetStorage();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> login() async {
+  Future<void> signupWithEmailAndPassword() async {
     nameFnode.unfocus();
     emailFnode.unfocus();
     passFnode.unfocus();
