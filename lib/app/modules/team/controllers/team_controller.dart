@@ -16,8 +16,8 @@ import '../../../utils/snackbar.dart';
 import '../../../utils/textfield.dart';
 
 class TeamController extends GetxController {
-  TextEditingController? _taskNameController = TextEditingController();
-  TextEditingController? _taskDescController = TextEditingController();
+  late TextEditingController _taskNameController;
+  late TextEditingController _taskDescController;
   final Uuid _uuid = const Uuid();
   String userId = FirebaseAuth.instance.currentUser?.uid ?? '';
   final HomeController _homeController = Get.find();
@@ -77,7 +77,7 @@ class TeamController extends GetxController {
   createNewTask(String teamId) async {
     final String uuid = _uuid.v4();
 
-    if (_taskNameController!.text.isEmpty) {
+    if (_taskNameController.text.isEmpty) {
       errorSnack('Task name is required');
       return;
     }
@@ -97,8 +97,8 @@ class TeamController extends GetxController {
                 membersId: [
                   _homeController.user.value!.id
                 ],
-                name: _taskNameController!.text,
-                description: _taskDescController!.text,
+                name: _taskNameController.text,
+                description: _taskDescController.text,
                 type: 1,
               ).toMap(),
             )
@@ -113,6 +113,8 @@ class TeamController extends GetxController {
 
   @override
   void onInit() async {
+    _taskNameController = TextEditingController();
+    _taskDescController = TextEditingController();
     super.onInit();
   }
 
