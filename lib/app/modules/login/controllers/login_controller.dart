@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/routes/app_pages.dart';
+import '../../../routes/app_pages.dart';
 
 import '../../../utils/helper.dart';
 import '../../../utils/snackbar.dart';

@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/config/app_themes.dart';
-import 'package:tukitaki_flutter/app/models/user.dart';
-import 'package:tukitaki_flutter/app/utils/text_view.dart';
 
+import '../config/app_themes.dart';
+import '../models/user.dart';
 import '../routes/app_pages.dart';
+import '../utils/text_view.dart';
 
 // ignore: must_be_immutable
 class TukiTakiDrawer extends StatelessWidget {

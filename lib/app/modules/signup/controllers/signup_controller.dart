@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/models/user.dart';
+import '../../../models/user.dart';
 import '../../../config/app_getstorages.dart';
 import '../../../config/firestore_ref.dart';
 import '../../../routes/app_pages.dart';

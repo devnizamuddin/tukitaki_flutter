@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/config/app_themes.dart';
-import 'package:tukitaki_flutter/app/models/task.dart';
-import 'package:tukitaki_flutter/app/models/team.dart';
-import 'package:tukitaki_flutter/app/modules/task/models/taskMembers.dart';
-import 'package:tukitaki_flutter/app/modules/task/views/add_people_view.dart';
+import '../../../config/app_themes.dart';
+import '../../../models/task.dart';
+import '../../../models/team.dart';
+import '../models/taskMembers.dart';
+import 'add_people_view.dart';
 
-import '../../../models/user.dart';
 import '../controllers/task_controller.dart';
 
 class TaskView extends GetView<TaskController> {

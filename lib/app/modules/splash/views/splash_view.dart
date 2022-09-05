@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/config/app_themes.dart';
-import 'package:tukitaki_flutter/app/utils/design.dart';
+import '../../../config/app_themes.dart';
+import '../../../utils/design.dart';
 import '../../../utils/text_view.dart';
 import '../controllers/splash_controller.dart';
 

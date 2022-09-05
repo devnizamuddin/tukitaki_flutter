@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:tukitaki_flutter/app/models/user.dart';
-import 'package:tukitaki_flutter/app/modules/task/models/taskMembers.dart';
+import 'user.dart';
+import '../modules/task/models/taskMembers.dart';
 
 class TaskModel {
   String id;

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/config/app_themes.dart';
-import 'package:tukitaki_flutter/app/models/team.dart';
-import 'package:tukitaki_flutter/app/utils/text_view.dart';
+import '../../../config/app_themes.dart';
+import '../../../models/team.dart';
+import '../../../utils/text_view.dart';
 
 import '../controllers/team_controller.dart';
 

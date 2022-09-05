@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/config/app_themes.dart';
-import 'package:tukitaki_flutter/app/models/team.dart';
+import '../../../config/app_themes.dart';
+import '../../../models/team.dart';
 
 import '../../../models/task.dart';
 import '../controllers/task_controller.dart';

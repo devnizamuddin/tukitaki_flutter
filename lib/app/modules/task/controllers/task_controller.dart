@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/config/firestore_ref.dart';
-import 'package:tukitaki_flutter/app/models/task.dart';
-import 'package:tukitaki_flutter/app/models/user.dart';
-import 'package:tukitaki_flutter/app/modules/home/controllers/home_controller.dart';
-import 'package:tukitaki_flutter/app/modules/task/models/taskMembers.dart';
+import '../../../config/firestore_ref.dart';
+import '../../../models/task.dart';
+import '../../../models/user.dart';
+import '../../home/controllers/home_controller.dart';
+import '../models/taskMembers.dart';
 
 import '../../../models/team.dart';
 import '../../../utils/snackbar.dart';

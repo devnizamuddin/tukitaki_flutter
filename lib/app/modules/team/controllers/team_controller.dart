@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/models/task.dart';
-import 'package:tukitaki_flutter/app/models/team.dart';
-import 'package:tukitaki_flutter/app/models/user.dart';
-import 'package:tukitaki_flutter/app/modules/home/controllers/home_controller.dart';
-import 'package:tukitaki_flutter/app/modules/task/models/taskMembers.dart';
-import 'package:tukitaki_flutter/app/routes/app_pages.dart';
+import '../../../models/task.dart';
+import '../../../models/team.dart';
+import '../../../models/user.dart';
+import '../../home/controllers/home_controller.dart';
+import '../../task/models/taskMembers.dart';
+import '../../../routes/app_pages.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../config/firestore_ref.dart';

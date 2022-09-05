@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tukitaki_flutter/app/models/user.dart';
-import 'package:tukitaki_flutter/app/routes/app_pages.dart';
+import '../../../models/user.dart';
+import '../../../routes/app_pages.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../config/firestore_ref.dart';

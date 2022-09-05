@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:tukitaki_flutter/app/models/user.dart';
+import 'user.dart';
 
 class TeamModel {
   String id;
