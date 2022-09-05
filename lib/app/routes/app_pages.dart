@@ -43,12 +43,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.TEAM,
-      page: () => TeamView(),
+      page: () => const TeamView(),
       binding: TeamBinding(),
     ),
     GetPage(
       name: _Paths.TASK,
-      page: () => TaskView(),
+      page: () => const TaskView(),
       binding: TaskBinding(),
     ),
   ];

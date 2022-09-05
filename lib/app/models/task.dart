@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'user.dart';
 import '../modules/task/models/taskMembers.dart';
 
 class TaskModel {

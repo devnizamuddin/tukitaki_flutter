@@ -1,15 +1,13 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import '../models/user.dart';
-import '../utils/snackbar.dart';
 
 import '../config/firestore_ref.dart';
+import '../models/user.dart';
 import '../routes/app_pages.dart';
+import '../utils/snackbar.dart';
 
 class Services {
   ///FETCH A USER DATA FROM USER COLLECTION
@@ -25,7 +23,9 @@ class Services {
       }
     } else {
       debugPrint('your user id is null');
+      return null;
     }
+    return null;
   }
 
   // static Future sendFCM({required String userID, required String title, required String body}) async {

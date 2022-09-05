@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+
 import '../../../config/app_themes.dart';
 import '../../../models/task.dart';
 import '../../../models/team.dart';
+import '../controllers/task_controller.dart';
 import '../models/taskMembers.dart';
 import 'add_people_view.dart';
-
-import '../controllers/task_controller.dart';
 
 class TaskView extends GetView<TaskController> {
   const TaskView({Key? key}) : super(key: key);
