@@ -43,7 +43,18 @@ class TaskView extends GetView<TaskController> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Obx(() => ReorderableListView.builder(
-              itemBuilder: (context, index) => buildMembers(controller.listOfTaskMembers[index], controller, taskModel),
+              // itemBuilder: (context, index) => buildMembers(controller.listOfTaskMembers[index], controller, taskModel),
+              itemBuilder: (context, index) {
+                TaskMemberModel taskMember = controller.listOfTaskMembers[index];
+                return ListTile(
+                  onTap: () {
+                    controller.setTaskDoneToTaskStatus(taskModel, taskMember);
+                  },
+                  key: ValueKey(taskMember),
+                  title: Text(taskMember.name),
+                  leading: Text(taskMember.isTaskdone ? 'Completed' : 'Yet to Complete'),
+                );
+              },
               itemCount: controller.listOfTaskMembers.length,
               onReorder: (oldIndex, newIndex) {
                 final index = newIndex > oldIndex ? newIndex - 1 : newIndex;

@@ -53,10 +53,11 @@ class TaskController extends GetxController {
 
   setTaskDoneToTaskStatus(TaskModel taskModel, TaskMemberModel taskMember) async {
     TaskMemberModel taskMemberModel = taskMember.copyWith(isTaskdone: !taskMember.isTaskdone);
+    taskModel.taskMembers?[taskMember.taskSerial] = taskMemberModel;
     await FirestoreCollection.task
             .doc(taskModel.id)
             .set(taskModel.toMap())
-            .then((_) => successSnack('Members added Successfully'))
+            .then((_) => successSnack('Task Status Updated Successfully'))
 
             // .then((_) => Get.offNamedUntil(Routes.MYJOBS, ModalRoute.withName(Routes.HOME)))
             //.then((_) => Services.counterModify('total_jobs', true))
