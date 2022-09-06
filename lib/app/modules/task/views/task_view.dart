@@ -55,9 +55,7 @@ class TaskView extends GetView<TaskController> {
               },
               itemCount: controller.listOfTaskMembers.length,
               onReorder: (oldIndex, newIndex) {
-                final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
-                final member = controller.listOfTaskMembers.removeAt(oldIndex);
-                controller.listOfTaskMembers.insert(index, member);
+                controller.onReOrderTask(oldIndex, newIndex);
               },
             )),
       ),

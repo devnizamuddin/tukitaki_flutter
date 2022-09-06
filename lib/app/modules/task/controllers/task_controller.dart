@@ -65,6 +65,12 @@ class TaskController extends GetxController {
         ;
   }
 
+  onReOrderTask(int oldIndex, int newIndex) {
+    final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
+    final member = listOfTaskMembers.removeAt(oldIndex);
+    listOfTaskMembers.insert(index, member);
+  }
+
   @override
   void onInit() {
     super.onInit();
