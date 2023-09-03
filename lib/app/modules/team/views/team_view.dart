@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:tukitaki_flutter/app/models/user.dart';
 import '../../../config/app_themes.dart';
 import '../../../models/team.dart';
 import '../../../utils/text_view.dart';
@@ -63,6 +64,32 @@ class TeamView extends GetView<TeamController> {
                   ),
                 ),
               ),
+              //==========================================Showing team member's info====================================================
+              SizedBox(
+                height: 128,
+                child: ListView.builder(
+                  itemCount: team?.members?.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    UserModel? userModel = team?.members?[index];
+                    return Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text('${userModel?.name ?? ''}'),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text('${userModel?.email ?? ''}'),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              //==========================================Showing task list under team====================================================
               Obx(
                 () => Expanded(
                   child: GridView.builder(
@@ -91,13 +118,16 @@ class TeamView extends GetView<TeamController> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const Icon(Icons.people, color: AppThemes.PrimaryColor, size: 50),
+                                const Icon(Icons.people,
+                                    color: AppThemes.PrimaryColor, size: 50),
                                 Text(
                                   task.name,
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
-                                  style: const TextStyle(color: AppThemes.PrimaryColor, fontSize: 12),
+                                  style: const TextStyle(
+                                      color: AppThemes.PrimaryColor,
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
